@@ -5,13 +5,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "feature/github-actions" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "feature/github-actions" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,7 +25,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
+    # Install dependencies
     - run: npm ci
 
     # - run: npm run build --if-present
     - run: npm test
+    - run: npm run eslint
