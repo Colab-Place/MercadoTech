@@ -5,13 +5,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "feature/github-actions" ]
+    branches: [ "feature/github-actions-tests" ]
   pull_request:
-    branches: [ "feature/github-actions" ]
+    branches: [ "feature/github-actions-tests" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,3 +29,4 @@ jobs:
 
     # - run: npm run build --if-present
     - run: npm test
+    - run: npm run eslint
